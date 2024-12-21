@@ -1,0 +1,62 @@
+3a4_inducers,3a4_inhibitors,pgp_inhibitors,pgp_inducers
+Bexarotene,Adagrasib,Abrocitinib,Apalutamide
+Bosentan,Atazanavir,Adagrasib,Carbamazepine
+Cenobamate,Ceritinib,Amiodarone,Fosphenytoin
+Dabrafenib,Clarithromycin,Azithromycin,Green tea (Camellia sinensis)
+Dexamethasone,Cobicistat,Belumosudil,Lorlatinib
+Dipyrone,Darunavir,Cannabidiol,Phenytoin
+Efavirenz,Idelalisib,Capmatinib,Rifampin (rifampicin)
+"Elagolix, estradiol, norethindrone therapy pack",Indinavir,Carvedilol,St. John's wort
+Eslicarbazepine,Itraconazole,Clarithromycin,carbamazepine (extended-release)
+Etravirine,Ketoconazole,Cobicistat,phenytoin sodium (iv)
+Lorlatinib,Levoketoconazole,Cyclosporine,phenytoin (suspension)
+Mitapivat,Lonafarnib,Daclatasvir,phenytoin sodium
+Modafinil,Lopinavir,Daridorexant,phenytoin sodium extended
+Nafcillin,Mifepristone,Diosmin,phenytoin infatab
+Pexidartinib,Nefazodone,Dronedarone,
+Repotrectinib,Nelfinavir,Elagolix,
+Rifabutin,Nirmatrelvir-ritonavir,Elagolix-estradiol-norethindrone,
+Rifapentine,Ombitasvir-paritaprevir-ritonavir,Eliglustat,
+Sotorasib,Itraconazole solution,Elexacaftor-tezacaftor-ivacaftor,
+St. John's wort,Posaconazole,Enzalutamide,
+Apalutamide,Ritonavir,Erythromycin ethylsuccinate suspension,
+Carbamazepine,Saquinavir,Flibanserin,
+Encorafenib,Tucatinib,Fostamatinib,
+Enzalutamide,Voriconazole,Glecaprevir-pibrentasvir,
+Fosphenytoin,Amiodarone,Isavuconazole (isavuconazonium sulfate),
+Lumacaftor,Aprepitant,Itraconazole solution,
+Lumacaftor-ivacaftor,Avacopan,Ivacaftor,
+Mitotane,Berotralstat,Ketoconazole (systemic),
+Phenobarbital,Cimetidine,Lapatinib,
+Phenytoin,Conivaptan,Ledipasvir,
+Primidone,Crizotinib,Levoketoconazole,
+Rifampin (rifampicin),Cyclosporine,Mavorixafor,
+bosentan(tracleer),Diltiazem,Mifepristone*,
+carbamazepine (extended-release),Duvelisib,Neratinib,
+dexamethasone oral soln (0.1mg/1ml),Dronedarone,Nirmatrelvir-ritonavir,
+dexamethasone oral soln,Erythromycin,Ombitasvir-paritaprevir-ritonavir (Technivie),
+dexamethasone sod phosphate,Fedratinib,Osimertinib,
+phenobarbital - icu alcohol withdrawal (initial load / rescue dose),Fluconazole,Pirtobrutinib,
+phenobarbital alcohol withdrawal dose taper (days 2-7),Fosamprenavir,Posaconazole,
+phenytoin sodium (iv),Fosaprepitant,Propafenone,
+phenytoin (suspension),Fosnetupitant-palonosetron,Quinidine,
+phenytoin sodium,Grapefruit juice,Quinine,
+phenytoin sodium extended,Imatinib,Ranolazine,
+phenytoin infatab,Isavuconazole (isavuconazonium sulfate),Ritonavir,
+,Lefamulin,Rolapitant,
+,Letermovir,Selpercatinib,
+,Netupitant,Simeprevir,
+,Nilotinib,Sotagliflozin,
+,Nirogecestat,Sotorasib,
+,Ribociclib,Tamoxifen,
+,Schisandra,Tepotinib,
+,verapamil sr,Tezacaftor-ivacaftor,
+,cyclosporine (sandimmune),Ticagrelor,
+,cyclosporine (neoral) modified,Tucatinib,
+,cyclosporine modified,Velpatasvir,
+,diltiazem extended-release,Vemurafenib,
+,fluconazole (self med),verapamil sr,
+,fluconazole suspension,Voclosporin,
+,,cyclosporine (sandimmune),
+,,cyclosporine (neoral) modified,
+,,cyclosporine modified,
