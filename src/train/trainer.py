@@ -1,27 +1,29 @@
-from typing import Dict, Any
+"""Module to train the LSTM model using PyTorch Lightning."""
+
+from typing import Any
+
 import numpy as np
-import torch
-from sklearn.model_selection import GroupShuffleSplit
-from torch.utils.data import DataLoader, Subset
 import pytorch_lightning as pl
+import torch
 from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint
 from pytorch_lightning.loggers import TensorBoardLogger
+from sklearn.model_selection import GroupShuffleSplit
+from torch.utils.data import DataLoader, Subset
 
 from src.data.dataset import TacrolimusDataset
-from src.models.lstm_attention_model import AttentionLSTMModel, AttentionLSTMEnsemble
-from src.models.lstm_model import LSTMModel, LSTMEnsemble
-from src.models.time_aware_lstm import TimeAwareLSTM, TimeAwareLSTMEnsemble
-from src.models.tl_lstm import LSTMTransferLearning
+from src.models.attention_lstm import AttentionLSTMModel
+from src.models.time_aware_lstm import TimeAwareLSTM
+from src.models.transfer_learning_lstm import LSTMTransferLearning
 
 
 def train_model(
-        config: Dict[str, Any],
-        x_train: torch.Tensor,
-        y_train: torch.Tensor,
-        groups: np.ndarray = None,
-        time_diff: Any = None,
-        lstm_model: str = 'attention',
-        validation: bool = False,
+    config: dict[str, Any],
+    x_train: torch.Tensor,
+    y_train: torch.Tensor,
+    groups: np.ndarray = None,
+    time_diff: Any = None,
+    lstm_model: str = "attention",
+    validation: bool = False,
 ) -> pl.LightningModule:
     """Train the LSTM model using train and validation sets.
 
@@ -32,7 +34,7 @@ def train_model(
         groups (np.ndarray): Group labels for GroupShuffleSplit.
         time_diff (Any, optional): Time difference information.
         lstm_model (str, optional): Type of LSTM model to use.
-        ensemble (bool, optional): Whether to use ensemble model.
+        validation (bool, optional): Whether to use validation set.
 
     Returns:
         pl.LightningModule: Trained LSTM model.
@@ -49,21 +51,13 @@ def train_model(
         train_dataset = Subset(full_dataset, train_idx)
         val_dataset = Subset(full_dataset, val_idx)
         val_loader = DataLoader(
-            val_dataset,
-            batch_size=2048,
-            shuffle=False,
-            num_workers=20,
-            pin_memory=True,
+            val_dataset, batch_size=2048, shuffle=False, num_workers=20, pin_memory=True
         )
     else:
         train_dataset = full_dataset
 
     train_loader = DataLoader(
-        train_dataset,
-        batch_size=2048,
-        shuffle=True,
-        num_workers=20,
-        pin_memory=True,
+        train_dataset, batch_size=2048, shuffle=True, num_workers=20, pin_memory=True
     )
 
     # Model initialization (unchanged)
@@ -107,7 +101,7 @@ def train_model(
             max_epochs=300,
             callbacks=[early_stopping, checkpoint_callback],
             logger=logger,
-            accelerator='gpu',
+            accelerator="gpu",
             devices=[0],
         )
 
@@ -129,14 +123,12 @@ def train_model(
             max_epochs=200,
             callbacks=[early_stopping, checkpoint_callback],
             logger=logger,
-            accelerator='gpu',
+            accelerator="gpu",
             devices=[0],
         )
         trainer.fit(model, train_loader)
 
-    best_model = model.load_from_checkpoint(checkpoint_callback.best_model_path)
-
-    return best_model
+    return model.load_from_checkpoint(checkpoint_callback.best_model_path)
 
 
 def train_tl_model(
@@ -148,9 +140,10 @@ def train_tl_model(
     """Train the LSTM model using train and validation sets.
 
     Args:
-        config (Dict[str, Any]): Configuration dictionary.
         x_train (torch.Tensor): Training input features.
         y_train (torch.Tensor): Training target variable.
+        tl_model (pl.LightningModule): Transfer learning model.
+        time_diff (Any, optional): Time difference information.
 
     Returns:
         pl.LightningModule: Trained LSTM model.
@@ -158,14 +151,10 @@ def train_tl_model(
     train_dataset = TacrolimusDataset(x_train, y_train, time_diff=time_diff)
 
     train_loader = DataLoader(
-        train_dataset,
-        batch_size=2048,
-        shuffle=True,
-        num_workers=40,
-        pin_memory=True,
+        train_dataset, batch_size=2048, shuffle=True, num_workers=40, pin_memory=True
     )
 
-    model = LSTMTransferLearning(tl_model, time=True if time_diff is not None else False)
+    model = LSTMTransferLearning(tl_model, time=time_diff is not None)
     early_stopping = EarlyStopping(monitor="train_loss", patience=20, mode="min")
     checkpoint_callback = ModelCheckpoint(
         dirpath="checkpoints",
@@ -182,12 +171,10 @@ def train_tl_model(
         max_epochs=200,
         callbacks=[early_stopping, checkpoint_callback],
         logger=logger,
-        accelerator='gpu',
+        accelerator="gpu",
         devices=[0],
     )
 
     trainer.fit(model, train_loader)
 
-    best_model = model.load_from_checkpoint(checkpoint_callback.best_model_path, model=model.model)
-
-    return best_model
+    return model.load_from_checkpoint(checkpoint_callback.best_model_path, model=model.model)

@@ -1,4 +1,8 @@
-NUMERIC_COLS = [
+"""Configuration file for the training pipeline."""
+
+from typing import Final
+
+NUMERIC_COLS: Final[list[str]] = [
     "subject_id",
     "age",
     "weight",
@@ -24,7 +28,7 @@ NUMERIC_COLS = [
     "doses_per_24_hrs",
     "level_dose_timediff",
 ]
-CATEGORICAL_COLS = ["gender", "race", "state", "formulation", "route"]
-TIME_COLS = ["level_time", "dose_time"]
-TIME_ORDERING_COL = "level_time"
-TARGET = "tac_level"
+CATEGORICAL_COLS: Final[list[str]] = ["gender", "race", "state", "formulation", "route"]
+TIME_COLS: Final[list[str]] = ["level_time", "dose_time"]
+TIME_ORDERING_COL: Final[str] = "level_time"
+TARGET: Final[str] = "tac_level"
