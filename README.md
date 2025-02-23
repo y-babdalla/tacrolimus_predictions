@@ -1,4 +1,11 @@
-# LSTM-Based Tacrolimus Modelling and Synthetic Data Generation
+# DoseTAIlor: A Web-Based Platform for Personalised Tacrolimus Dose Optimisation Across Multi-Centre Populations Using Interpretable AI
+
+**Authors**:  
+Youssef Abdalla, Laura Gongas, Brais Muñiz Castro, Luis Ramudo Cela, Francisco Suárez, Mine Orlu, Luis Margusino-Framiñán, Abdul W. Basit, David Shorthouse, Alvaro Goyanes
+
+**Prepint**: https://doi.org/10.21203/rs.3.rs-5907999/v1
+
+**Software**: https://dosetailor.com/tacrolimusv1 
 
 This repository provides end-to-end Python pipelines for:
 
